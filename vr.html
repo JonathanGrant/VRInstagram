@@ -45,7 +45,7 @@
         </a-entity>
       </a-entity>
   
-      <a-entity position="-3.5 1 0">
+      <a-entity id="cubered" position="-3.5 1 0">
         <a-entity mixin="cube red">
           <a-animation begin="click" attribute="position" from="0 0 0"
                    to="0 0 -10" dur="2000" fill="both"></a-animation>
@@ -59,8 +59,8 @@
         </a-entity>
       </a-entity>
 
-      <a-entity position="3.5 1 0" rotation="0 45 0">
-        <a-entity id="blue" mixin="cube blue" onClick="document.getElementById('sky').setAttribute('src', './ig.jpg');">
+      <a-entity id="cubeblue" position="3.5 1 0" rotation="0 45 0">
+        <a-entity mixin="cube blue">
           <a-animation begin="click" fill="forwards" repeat="1"
                    direction="alternate" attribute="position" from="0 0 0"
                    to="15 0 0" dur="2000"></a-animation>
@@ -70,14 +70,16 @@
       <a-entity position="0 3 0" class="clickable" mixin="cube yellow"
             rotation="0 45 0" scale=".5 .5 .5"></a-entity>
     </a-scene>
-    <!-- <script>
-      console.log("got here");
-      var blueCube = document.getElementById('blue');
-      blueCube.onclick = function() {
-        console.log("clicked")
-        var sky = document.getElementById('sky');
-        sky.setAttribute('src', './ig.jpg');
-      };
-    </script> -->
+    <script>
+      imgList = ['./jan1.jpg', './ig.jpg']
+      var myBlue = document.getElementById('cubeblue');
+      myBlue.onclick = function() {
+        document.getElementById('sky').setAttribute('src', './ig.jpg');
+      }
+      var myRed = document.getElementById('cubered');
+      myRed.onclick = function() {
+        document.getElementById('sky').setAttribute('src', imgList[0]);
+      }
+    </script>
   </body>
 </html>
