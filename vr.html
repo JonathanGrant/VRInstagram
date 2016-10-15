@@ -24,9 +24,8 @@
         <a-mixin id="cube-hovered" material="color: magenta"></a-mixin>
         <a-mixin id="cube-selected" material="color: cyan"></a-mixin>
         <a-mixin id="red" material="color: red"></a-mixin>
-        <a-mixin id="green" material="color: green"></a-mixin>
-        <a-mixin id="blue" material="color: blue"></a-mixin>
         <a-mixin id="yellow" material="color: yellow"></a-mixin>
+        <a-mixin id="blue" material="color: blue"></a-mixin>
         <a-mixin id="sphere" geometry="primitive: sphere"></a-mixin>
       </a-assets>
       <a-sky id="sky" src="./jan1.jpg"></a-sky>
@@ -45,40 +44,43 @@
         </a-entity>
       </a-entity>
   
-      <a-entity id="cubered" position="-3.5 1 0">
+      <a-entity id="cubered" position="-3.5 -10 0">
         <a-entity mixin="cube red">
           <a-animation begin="click" attribute="position" from="0 0 0"
                    to="0 0 -10" dur="2000" fill="both"></a-animation>
         </a-entity>
       </a-entity>
 
-      <a-entity position="0 1 0">
-        <a-entity mixin="cube green">
-          <a-animation begin="click" attribute="rotation" to="0 360 0"
-                   easing="linear" dur="2000" fill="backwards"></a-animation>
+      <a-entity id="cubeyellow" position="0 -10 0">
+        <a-entity mixin="cube yellow">
+          <a-animation begin="click" attribute="position" from="0 0 0"
+                   to="0 0 -10" dur="2000" fill="both"></a-animation>
         </a-entity>
       </a-entity>
 
-      <a-entity id="cubeblue" position="3.5 1 0" rotation="0 45 0">
+      <a-entity id="cubeblue" position="3.5 -10 0" rotation="0 45 0">
         <a-entity mixin="cube blue">
           <a-animation begin="click" fill="forwards" repeat="1"
                    direction="alternate" attribute="position" from="0 0 0"
                    to="15 0 0" dur="2000"></a-animation>
         </a-entity>
       </a-entity>
-
-      <a-entity position="0 3 0" class="clickable" mixin="cube yellow"
-            rotation="0 45 0" scale=".5 .5 .5"></a-entity>
     </a-scene>
     <script>
-      imgList = ['./jan1.jpg', './ig.jpg']
+      var imgList = ['./jan1.jpg', './ig.jpg', './02.jpg', './03.jpg', './04.jpg', './05.jpg', './06.jpg', './07.jpg', './08.jpg', './09.jpg', './10.jpg'];
       var myBlue = document.getElementById('cubeblue');
       myBlue.onclick = function() {
-        document.getElementById('sky').setAttribute('src', './ig.jpg');
+        var sky = document.getElementById('sky');
+        var index = imgList.indexOf(sky.getAttribute('src'));
+        index = (index + 1) % imgList.length;
+        sky.setAttribute('src', imgList[index]);
       }
       var myRed = document.getElementById('cubered');
       myRed.onclick = function() {
-        document.getElementById('sky').setAttribute('src', imgList[0]);
+        var sky = document.getElementById('sky');
+        var index = imgList.indexOf(sky.getAttribute('src'));
+        index = Math.abs((index - 1) % imgList.length);
+        sky.setAttribute('src', imgList[index]);
       }
     </script>
   </body>
