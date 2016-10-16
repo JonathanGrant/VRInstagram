@@ -6,5 +6,5 @@ Does not contain access to instagram as of yet
 
 Requirements
 
-Android Phone
+Android Phone,
 Google gear
