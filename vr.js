@@ -5,6 +5,14 @@ var FB = require('fb');
 var _ = require('underscore');
 
 app.get('/', function(req, res) {
+  var photos = [];
+  FB.api('/v2.8/me/photos', {access_token: 'EAAZALeIMCnU0BAEALpfoM3YhBZBxORO0FATeGQx5KQKZCwVWWTjNpDDzPfZCFZBb8grzKGwYiyFaMgXwM1RRe0HJLMcpAZCtu9iyAnk1asJ7XdraEP1vvtkogi6dEVte2AhzTHVPFZAGhj8vGXMsA8NIzcJzDPbxlcZD' }, function (fbres) {
+    photos = fbres.data;
+    FB.api('/v2.8/'+photos[0].id+'/?fields=images', {access_token: 'EAAZALeIMCnU0BAEALpfoM3YhBZBxORO0FATeGQx5KQKZCwVWWTjNpDDzPfZCFZBb8grzKGwYiyFaMgXwM1RRe0HJLMcpAZCtu9iyAnk1asJ7XdraEP1vvtkogi6dEVte2AhzTHVPFZAGhj8vGXMsA8NIzcJzDPbxlcZD' }, function (fbres) {
+      console.log(fbres);
+      res.send(fbres.images[0].source);
+    })
+  });
   res.sendFile(path.join(__dirname + '/vr.html'));
 })
 
