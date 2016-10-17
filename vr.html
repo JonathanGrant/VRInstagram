@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Alex Gray is Beautiful</title>
-    <meta name="description" content="Trippy Virtual Reality, Alex Gray is Beautiful">
+    <title>VRInstagram</title>
+    <meta name="description" content="VRInstagram the WebVR App">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/latest/aframe.min.js"></script>
-    <script>
+    <!-- <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -15,73 +15,9 @@
       ga('create', 'UA-73641962-2', 'auto');
       ga('send', 'pageview');
 
-    </script>
+    </script> -->
   </head>
   <body>
-    <a-scene>
-      <a-assets>
-        <a-mixin id="cube" geometry="primitive: box"></a-mixin>
-        <a-mixin id="cube-hovered" material="color: magenta"></a-mixin>
-        <a-mixin id="cube-selected" material="color: cyan"></a-mixin>
-        <a-mixin id="red" material="color: red"></a-mixin>
-        <a-mixin id="yellow" material="color: yellow"></a-mixin>
-        <a-mixin id="blue" material="color: blue"></a-mixin>
-        <a-mixin id="sphere" geometry="primitive: sphere"></a-mixin>
-      </a-assets>
-      <a-sky id="sky" src="./jan1.jpg"></a-sky>
-      <a-entity position="0 2.2 4">
-        <a-entity camera look-controls wasd-controls>
-          <a-entity position="0 0 -3"
-                geometry="primitive: ring; radiusOuter: 0.30;
-                          radiusInner: 0.20;"
-                material="color: cyan; shader: flat"
-                cursor="maxDistance: 30; fuse: true">
-            <a-animation begin="click" easing="ease-in" attribute="scale"
-             fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
-            <a-animation begin="fusing" easing="ease-in" attribute="scale"
-             fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
-          </a-entity>
-        </a-entity>
-      </a-entity>
-  
-      <a-entity id="cubered" position="-3.5 -10 0">
-        <a-entity mixin="cube red">
-          <a-animation begin="click" attribute="position" from="0 0 0"
-                   to="0 0 -10" dur="2000" fill="both"></a-animation>
-        </a-entity>
-      </a-entity>
-
-      <a-entity id="cubeyellow" position="0 -10 0">
-        <a-entity mixin="cube yellow">
-          <a-animation begin="click" attribute="position" from="0 0 0"
-                   to="0 0 -10" dur="2000" fill="both"></a-animation>
-        </a-entity>
-      </a-entity>
-
-      <a-entity id="cubeblue" position="3.5 -10 0" rotation="0 45 0">
-        <a-entity mixin="cube blue">
-          <a-animation begin="click" fill="forwards" repeat="1"
-                   direction="alternate" attribute="position" from="0 0 0"
-                   to="15 0 0" dur="2000"></a-animation>
-        </a-entity>
-      </a-entity>
-    </a-scene>
-    <script>
-      var imgList = ['./jan1.jpg', './ig.jpg', './02.jpg', './03.jpg', './04.jpg', './05.jpg', './06.jpg', './07.jpg', './08.jpg', './09.jpg', './10.jpg'];
-      var myBlue = document.getElementById('cubeblue');
-      myBlue.onclick = function() {
-        var sky = document.getElementById('sky');
-        var index = imgList.indexOf(sky.getAttribute('src'));
-        index = (index + 1) % imgList.length;
-        sky.setAttribute('src', imgList[index]);
-      }
-      var myRed = document.getElementById('cubered');
-      myRed.onclick = function() {
-        var sky = document.getElementById('sky');
-        var index = imgList.indexOf(sky.getAttribute('src'));
-        index = Math.abs((index - 1) % imgList.length);
-        sky.setAttribute('src', imgList[index]);
-      }
-    </script>
+    <a href="https://www.facebook.com/dialog/oauth?client_id=1771830826409293&redirect_uri=http://localhost:3000/fb/oauth&scope=user_photos">fb</a>
   </body>
 </html>
